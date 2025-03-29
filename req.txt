@@ -1,0 +1,13 @@
+advertools==0.14.3
+beautifulsoup4==4.12.3
+deep_translator==1.11.4
+googletrans==3.0.0
+nltk==3.8.1
+pandas==2.0.0
+pytz==2023.3
+regex==2024.5.15
+Requests==2.32.3
+requests_html==0.10.0
+selenium==4.22.0
+urllib3==1.26.14
+webdriver_manager==4.0.1
