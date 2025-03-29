@@ -1,100 +1,65 @@
-# Cricket Data Scraper
+# Cricket Data Scraper  
 
-## Overview
+## Overview  
 
-This project is a web scraper that extracts batting statistics from Cricbuzz for matches played between 2011 and 2020. The data includes player names, dismissal mode, runs scored, balls faced, fours, sixes, strike rate, innings, location, date, batting position, format, year, match name, and series name. The extracted data is saved into a CSV file named `Batting_Info.csv`.
+This project is a web scraper that extracts batting statistics from Cricbuzz for matches played between 2011 and 2020. The extracted data includes player names, dismissal mode, runs scored, balls faced, fours, sixes, strike rate, innings, location, date, batting position, format, year, match name, and series name. The extracted data is saved into a CSV file named `Batting_Info.csv`.  
 
-## Project Plan
+## Workflow  
 
-### **1. Data Source Identification**
+1. **Data Extraction**  
+   - The scraper collects match scorecards from Cricbuzz archives.  
+   - It first fetches all series played in a given year.  
+   - Then, it extracts match URLs from each series and retrieves the detailed scorecards.  
+   - The script parses batting scorecards, extracting statistics for each player.  
 
-- The scraper fetches match data from [Cricbuzz](https://www.cricbuzz.com) using archived scorecards.
-- The base URL for each year is structured as: `https://www.cricbuzz.com/cricket-scorecard-archives/{year}`.
+2. **Data Processing**  
+   - The extracted data is structured into a Pandas DataFrame.  
+   - The data is cleaned and formatted to ensure consistency.  
+   - The processed data is saved into `Batting_Info.csv`.  
 
-### **2. Extracting Series URLs**
+3. **Integration with Google AI Studio**  
+   - The CSV file is uploaded to Google AI Studio.  
+   - A custom AI model is trained using this dataset to analyze batting performance trends.  
+   - The model is fine-tuned to enhance predictive capabilities.  
 
-- The script first fetches the list of series played in a given year.
-- Each series page contains multiple matches, so it collects the URLs of all matches in that series.
+4. **Creating the Gemini API**  
+   - The fine-tuned model from Google AI Studio is deployed as an API using Gemini AI.  
+   - The API enables advanced analytics, including player performance predictions and insights.  
 
-### **3. Extracting Match Information**
+5. **Frontend Development using Streamlit**  
+   - A Streamlit dashboard is built for real-time interaction.  
+   - Users can explore statistics, based on their query.  
 
-- For each match, the scraper finds the scoreboard URL.
-- The script extracts:
-  - **Game format** (Test, ODI, or T20)
-  - **Match name**
-  - **Series name**
-  - **Location**
-  - **Date**
-  - **Year**
+## Installation & Usage  
 
-### **4. Extracting Batting Data**
-
-- The scraper parses batting scorecards for up to four innings per match.
-- For each batsman, the following details are extracted:
-  - **Name**
-  - **Mode of dismissal**
-  - **Runs scored**
-  - **Balls faced**
-  - **Fours**
-  - **Sixes**
-  - **Strike rate**
-  - **Batting position**
-  - **Innings number**
-
-### **5. Saving Data**
-
-- All extracted information is stored in a Pandas DataFrame.
-- The DataFrame is then exported to a CSV file named `Batting_Info.csv`.
-
-## Modifications and Enhancements
-
-- **Modified in Google Studio**: The extracted data and analytics were further refined using Google AI Studio.
-- **Data Feed into Google AI Studio**: The extracted cricket data was uploaded to Google AI Studio for model training and fine-tuning.
-- **Finetuned API for Function Calls**: A custom AI model was fine-tuned using Google AI Studio and integrated with the project for predictive analytics.
-- **Integration with Gemini API**: Implemented Gemini API to enhance data analysis and prediction.
-- **Frontend using Streamlit**: Built an interactive frontend using Streamlit to visualize and explore the extracted cricket data in real-time.
-
-## Installation & Usage
-
-### **Prerequisites**
-
-Ensure you have the following dependencies installed:
+### **Prerequisites**  
+Ensure you have the required dependencies installed:  
 
 ```bash
 pip install requests pandas numpy beautifulsoup4 streamlit
-```
+```  
 
-### **Running the Script**
-
-Execute the script using:
+### **Running the Scraper**  
+Run the script to extract and save batting data:  
 
 ```bash
 python script.py
-```
+```  
 
-This will start scraping Cricbuzz and generate `Batting_Info.csv` with all the required details.
-
-### **Running the Streamlit App**
-
-To launch the interactive dashboard, run:
+### **Launching the Streamlit Dashboard**  
+To visualize the data interactively:  
 
 ```bash
 streamlit run app.py
-```
+```  
 
-## Notes
+## Future Enhancements  
 
-- The scraper might be blocked due to repeated requests, so adding time delays or rotating proxies can improve stability.
-- This project is for educational purposes only and should not be used for commercial scraping without Cricbuzz's permission.
+- **Optimized Scraping**: Implement multi-threading for faster data collection.  
+- **Live Match Updates**: Extend functionality to fetch live match data.  
+- **Comprehensive Analytics**: Include bowling and fielding statistics.  
+- **Enhanced Visualization**: Add more filters and interactive elements in the Streamlit app.  
 
-## Future Improvements
+## Author  
 
-- Implement multi-threading to speed up the scraping process.
-- Add error handling for missing or inconsistent data.
-- Support live match updates.
-- Extract bowling and fielding statistics.
-- Expand Streamlit app with additional filters and visualizations.
-
-## Author
-
-Developed by Mani Deep
+Developed by Mani Deep.
