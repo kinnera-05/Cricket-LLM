@@ -62,4 +62,4 @@ streamlit run app.py
 
 ## Author  
 
-Developed by Mani Deep.
+Developed by Kinnera and Team.
